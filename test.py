@@ -1,3 +1,1 @@
-print("heelloo wokdds)
-      
-      print("Hello World")
+print("heelloo wokdds")
