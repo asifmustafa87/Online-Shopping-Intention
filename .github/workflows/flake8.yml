@@ -1,13 +1,16 @@
-name: flake8
+name: Lint
+on:
+  push:
+  pull_request:
+    branches: [master, main]
 
-on: [push, pull_request]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
       - name: Install requirements
@@ -17,4 +20,4 @@ jobs:
         run: flake8 --count --statistics --show-source
 
       - name: Warnings
-        run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --ignore=E203, E266, E501, W503, F403, F401, E722 --extend-exclude=""
+        run: flake8 . --count --select=B,C,E,F,W,T4,B9,E9,F63,F7,F82 --exit-zero --max-complexity=10 --max-line-length=127 --statistics --show-source --extend-exclude=""
