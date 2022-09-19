@@ -21,3 +21,7 @@ jobs:
 
       - name: Warnings
         run: flake8 . --count --select=B,C,E,F,W,T4,B9,E9,F63,F7,F82 --exit-zero --max-complexity=10 --max-line-length=127 --statistics --show-source --extend-exclude=""
+        env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
